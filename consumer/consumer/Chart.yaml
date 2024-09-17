@@ -1,0 +1,7 @@
+apiVersion: v2
+name: consumer
+description: A Helm chart for Consumer app
+
+version: 0.1.0
+
+dependencies: []

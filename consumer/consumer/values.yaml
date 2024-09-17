@@ -1,0 +1,13 @@
+replicaCount: 1
+
+image:
+  repository: drkvax/consumer
+  tag: latest
+
+service:
+  type: ClusterIP
+  port: 8080
+
+serviceAccount:
+  create: true
+  name: ""

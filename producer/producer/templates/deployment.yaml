@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: producer
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        command: ["python", "producer.py"]
+        args: 
+          - "-p"
+          - "5672"
+          - "-s"
+          - "my-release-rabbitmq" 
+          - "-m"
+          - "Hello" 
+          - "-r"
+          - "30"
+        ports:
+        - containerPort: 5000
