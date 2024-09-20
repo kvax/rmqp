@@ -25,3 +25,4 @@ spec:
           - "my-release-rabbitmq"
         ports:
         - containerPort: 5000
+        - containerPort: 9422

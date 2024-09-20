@@ -7,5 +7,9 @@ spec:
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 5000
+      name: node
+    - port: 9422
+      targetPort: 9422
+      name: metrics
   selector:
     app: {{ .Release.Name }}
